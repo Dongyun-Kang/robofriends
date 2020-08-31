@@ -22,12 +22,16 @@ class CounterButton extends Component {
   }
 
   render() {
-    console.log(this.props.color);
+    // console.log(this.props.color);
     return (
       // <button className={this.props.color} onClick={this.updateCount}>
 
-      <button className={this.props.color + " f8 grow no-underline br-pill ba bw1 ph4 pv3 mb2 dib"} onClick={this.updateCount} >
-        Count: { this.state.count}
+      <button
+        id='counter'
+        className={this.props.color + " f8 grow no-underline br-pill ba bw1 ph4 pv3 mb2 dib"}
+        // color={this.props.color}
+        onClick={this.updateCount} >
+        Count: {this.state.count}
       </button >
     );
   }

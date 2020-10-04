@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class CounterButton extends Component {
   constructor() {
     super();
     this.state = {
-      count: 0
-    }
+      count: 0,
+    };
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.state.count !== nextState.count) {
-      return true
+      return true;
     }
-    return false
+    return false;
   }
 
   updateCount = () => {
-    this.setState(state => {
-      return { count: this.state.count + 1 }
-    })
-  }
+    this.setState((state) => {
+      return { count: this.state.count + 1 };
+    });
+  };
 
   render() {
     // console.log(this.props.color);
@@ -27,12 +27,16 @@ class CounterButton extends Component {
       // <button className={this.props.color} onClick={this.updateCount}>
 
       <button
-        id='counter'
-        className={this.props.color + " f8 grow no-underline br-pill ba bw1 ph4 pv3 mb2 dib"}
+        id="counter"
+        className={
+          this.props.color +
+          " f8 grow no-underline br-pill ba bw1 ph4 pv3 mb2 dib"
+        }
         // color={this.props.color}
-        onClick={this.updateCount} >
+        onClick={this.updateCount}
+      >
         Count: {this.state.count}
-      </button >
+      </button>
     );
   }
 }

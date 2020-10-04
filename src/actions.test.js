@@ -1,37 +1,36 @@
-import * as actions from './actions';
+import * as actions from "./actions";
 import {
   CHANGE_SEARCH_FIELD,
   REQUEST_ROBOTS_PENDING,
   REQUEST_ROBOTS_SUCCESS,
   REQUEST_ROBOTS_FAILED,
-} from './constants.js'
+} from "./constants.js";
 
-import configureMockStore from 'redux-mock-store';
-import thunkMiddleware from 'redux-thunk';
+import configureMockStore from "redux-mock-store";
+import thunkMiddleware from "redux-thunk";
 
-const mockStore = configureMockStore([thunkMiddleware])
+const mockStore = configureMockStore([thunkMiddleware]);
 
-it('should create an action to sarch robots', () => {
-  const text = 'wooo';
+it("should create an action to sarch robots", () => {
+  const text = "wooo";
   const expectedAction = {
     type: CHANGE_SEARCH_FIELD,
-    payload: text
-  }
+    payload: text,
+  };
   expect(actions.setSearchField(text)).toEqual(expectedAction);
-})
+});
 
 // tests REQUEST_ROBOTS_PENDING
-it('handles requesting robots APIs', () => {
+it("handles requesting robots APIs", () => {
   const store = mockStore();
   store.dispatch(actions.requestRobots());
   const action = store.getActions();
 
   const expectedAction = {
-    type: REQUEST_ROBOTS_PENDING
-  }
+    type: REQUEST_ROBOTS_PENDING,
+  };
   expect(action[0]).toEqual(expectedAction);
-})
-
+});
 
 // tests REQUEST_ROBOTS_SUCCESS
 it("handles requesting robots API", () => {
@@ -39,7 +38,7 @@ it("handles requesting robots API", () => {
   store.dispatch(actions.requestRobots()).then(() => {
     const action = store.getActions();
     const firsExpectedAction = {
-      type: REQUEST_ROBOTS_PENDING
+      type: REQUEST_ROBOTS_PENDING,
     };
     expect(action[0]).toEqual(firsExpectedAction);
     // We don't care about what data the api is returning
@@ -56,7 +55,7 @@ it("handles requesting robots API", () => {
   store.dispatch(actions.requestRobots(wrongApiLink)).then(() => {
     const action = store.getActions();
     const firsExpectedAction = {
-      type: REQUEST_ROBOTS_PENDING
+      type: REQUEST_ROBOTS_PENDING,
     };
     expect(action[0]).toEqual(firsExpectedAction);
     expect(action[1].type).toEqual(REQUEST_ROBOTS_FAILED);
